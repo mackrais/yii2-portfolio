@@ -1,14 +1,14 @@
 {
   "name": "OlehBoiko/yii2-portfolio",
   "type": "yii2-module",
-  "license": "BSD 3-Clause",
+  "license": "MIT",
   "config": {
     "sort-packages": true
   },
   "repositories": [
     {
       "type":"git",
-      "url": "https://github.com/mackrais/yii2-crop-image-section.git"
+      "url": "https://github.com/OlehBoiko/yii2-portfolio.git"
     }
   ],
   "authors": [
@@ -25,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "mackrais\\portfolio\\": ""
+      "mackrais\\portfolio\\": "src/"
     }
   }
 }
