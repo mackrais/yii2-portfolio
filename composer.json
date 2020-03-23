@@ -1,0 +1,31 @@
+{
+  "name": "OlehBoiko/yii2-portfolio",
+  "type": "yii2-module",
+  "license": "BSD 3-Clause",
+  "config": {
+    "sort-packages": true
+  },
+  "repositories": [
+    {
+      "type":"git",
+      "url": "https://github.com/mackrais/yii2-crop-image-section.git"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Oleh Boiko",
+      "email": "developer@mackrais.com",
+      "homepage": "https://mackrais.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "yiisoft/yii2": "*",
+    "zoonman/linkedin-api-php-client": "^0.0.14"
+  },
+  "autoload": {
+    "psr-4": {
+      "mackrais\\portfolio\\": ""
+    }
+  }
+}
