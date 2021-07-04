@@ -16,8 +16,7 @@ use yii\helpers\Url;
 use yii\web\Controller;
 use LinkedIn\Client;
 use LinkedIn\Scope;
-
-
+use yii\web\NotFoundHttpException;
 
 /**
  * Class DefaultController
@@ -25,6 +24,8 @@ use LinkedIn\Scope;
  */
 class DefaultController extends Controller
 {
+    public $useSubdomain = true;
+
     private LinkedInOAuth $linkedInOAuth;
 
     public function init()
@@ -35,17 +36,25 @@ class DefaultController extends Controller
             '7bQZZOTg1HFEL0PO',
             'http://mackrais.loc/portfolio/linkedin-oauth'
         );
-        
+
     }
+
+//    protected function checkSubDomain(){
+//dd($this->request->getHostInfo());
+
+//        throw new NotFoundHttpException();
+//    }
+
 
     /**
      *
      */
     public function actionIndex(){
 
-
 //        echo Html::a('login', $this->linkedInOAuth->getLoginUrl());
 
+        $isPdf = $this->request->get('pdf', false);
+        $tpl = $isPdf ? $this->action->id : 'download-pdf';
 
         return $this->render($this->action->id . '.php', []);
     }
@@ -86,11 +95,11 @@ class DefaultController extends Controller
     }
 
     public function actionDownloadPdf(){
-       echo '<pre>';
-
-        $html = file_get_contents('http://mackrais.loc/portfolio/');
         $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
 
+        $html = file_get_contents(Yii::$app->request->hostInfo );
+        $html = str_replace(["\n\t", "\n", "\t"], "", $html);
+        $html = preg_replace('/\s+/', ' ', $html);
 
         $doc = new \DOMDocument();
         libxml_use_internal_errors(true);
@@ -99,21 +108,17 @@ class DefaultController extends Controller
         $body = $doc->getElementsByTagName('body');
         $head = $doc->getElementsByTagName('head');
         $links = $doc->getElementsByTagName('link');
+
         $css = '';
-
-
         $css .= file_get_contents(__DIR__ . '/../assets/css/pdf.bootstrap4.css');
         $css .= file_get_contents(__DIR__ . '/../assets/css/portfolio.css');
         $css .= file_get_contents(__DIR__ . '/../assets/css/pdf.css');
 
         $body = $body->item(0);
-
         $mpdf->WriteHTML($css,\Mpdf\HTMLParserMode::HEADER_CSS);
-        $mpdf->WriteHTML($doc->savehtml($body));
-        $mpdf->Output();
-        die;
+        $htmlBody = $doc->savehtml($body);
 
-        print_r($html);
-        die;
+        $mpdf->WriteHTML($htmlBody);
+        return $mpdf->Output();
     }
 }

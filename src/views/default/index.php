@@ -11,6 +11,10 @@
  */
 
 declare(strict_types=1);
+/**
+ * @var \yii\web\View $this
+ */
+//$this->registerCssFile('', [   'media' => 'print']);
 ?>
 
 <div class="row justify-content-center h-100">
@@ -41,18 +45,56 @@ declare(strict_types=1);
                 website:
             </li>
             <li class="value">
-                <a class="p-color-1" href="#">https://mackrais.com</a>
+                <a class="p-color-1" href="https://mackrais.com">https://mackrais.com</a>
             </li>
 
-            <li class="label p-color-2">
+            <li class="label p-color-2 no-print">
                 other:
             </li>
-            <li class="value social-networks">
+            <li class="value social-networks no-print">
                 <a href="skype:boyko.oleg3?chat">
                     <i class="fab fa-linkedin-in p-bg-color-1 p-color-3"></i>
                 </a>
                 <a href="#">
                     <i class="fab fa-facebook-f p-bg-color-1 p-color-3"></i>
+                </a>
+                <a href="https://github.com/mackrais">
+                    <i class="fab fa-github p-bg-color-1 p-color-3"></i>
+                </a>
+                <a href="https://github.com/mackrais">
+                    <i class="fab fa-gitlab p-bg-color-1 p-color-3"></i>
+                </a>
+                <a href="skype:boyko.oleg3?chat">
+                    <i class="fab fa-skype p-bg-color-1 p-color-3"></i>
+                </a>
+                <a href="tg://resolve?domain=mackrais">
+                    <i class="fab fa-telegram-plane p-bg-color-1 p-color-3"></i>
+                </a>
+            </li>
+
+            <li class="label p-color-2" onclick="alert();">
+                Skype:
+            </li>
+            <li class="value">
+                <a class="p-color-1" href="skype:boyko.oleg3?chat">boyko.oleg3</a>
+            </li>
+
+            <li class="value social-networks print-only">
+               <p>
+                   Skype:
+                   <a class="p-color-1" href="skype:boyko.oleg3?chat">
+                       boyko.oleg3
+                   </a>
+               </p>
+                <p>
+                    Skype:
+                    <a class="p-color-1" href="skype:boyko.oleg3?chat">
+                        boyko.oleg3
+                    </a>
+                </p>
+
+                <a class="p-color-1" href="https://www.facebook.com/mackrais">
+                    https://www.facebook.com/mackrais
                 </a>
                 <a href="https://github.com/mackrais">
                     <i class="fab fa-github p-bg-color-1 p-color-3"></i>
@@ -123,8 +165,8 @@ declare(strict_types=1);
 
         <ul class="portfolio-skills-list-ul">
             <li class="value">
-                <div class="row"
-                     style="border-bottom: 1px solid #fff; border-top: 1px solid #fff; background-color: #00a65a">
+                <div class="row header-skills"
+                     style="">
                     <div class="col-4 col-print-4">Name</div>
                     <div class="col-4 col-print-4">Level</div>
                     <div class="col-4 col-print-4">Last used</div>
@@ -262,7 +304,7 @@ declare(strict_types=1);
 
                         <div class="timeline timeline-green">
                             <span class="timeline-icon p-bg-color-2"></span>
-                            <div class="year p-color-5"><span class="t-caption p-bg-color-2">2014 - 2015</span></div>
+                            <div class="year p-color-5"><span class="t-caption p-bg-color-2 p-border-color-2">2014 - 2015</span></div>
                             <div class="label">Pytex</div>
                             <div class="timeline-content">
                                 <span class="icon fa fa-globe p-color-3"></span>
@@ -279,7 +321,7 @@ declare(strict_types=1);
 
                         <div class="timeline timeline-gray">
                             <span class="timeline-icon p-bg-color-3"></span>
-                            <div class="year p-color-5"><span class="t-caption p-bg-color-3">2014 - 2015</span></div>
+                            <div class="year p-color-5"><span class="t-caption p-bg-color-3 p-border-color-3">2014 - 2015</span></div>
                             <div class="label p-color-3">Pytex</div>
                             <div class="timeline-content">
                                 <span class="icon fa fa-rocket p-color-3"></span>

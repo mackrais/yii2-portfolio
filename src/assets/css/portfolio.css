@@ -330,3 +330,21 @@ html, body {
 .display-print{
     display: none;
 }
+
+.print-only{
+    display: none;
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+
+    .print-only{
+        display: block;
+    }
+}
+
+.header-skills {
+    border-bottom: 1px solid #fff; border-top: 1px solid #fff; background-color: #00a65a
+}

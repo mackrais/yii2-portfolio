@@ -21,6 +21,7 @@ use \yii\helpers\Html;
 BootstrapAsset::register($this);
 $this->registerCssFile('https://use.fontawesome.com/releases/v5.0.7/css/all.css');
 $this->registerCss(file_get_contents(__DIR__ . '/../../assets/css/portfolio.css'));
+$this->registerCss(file_get_contents(__DIR__ . '/../../assets/css/print.css'), ['media' => 'print']);
 
 ?>
 
